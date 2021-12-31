@@ -1,0 +1,24 @@
+ mount -o remount,rw /
+
+ rm /usr/share/dotnet.tizen/framework/*.ni.*
+
+ find /usr/apps/ -name "*.ni.*" -exec rm -rf {} \;
+
+ find /opt/usr/apps/ -name "*.ni.*" -exec rm -rf {} \; 
+
+ find /home/owner/apps_rw/ -name "*.ni.*" -exec rm -rf {} \; 
+
+ find /usr/share/dotnet/shared/ -name "*.ni.*" -exec rm -rf {} \;
+
+ sync 
+
+ rm /opt/usr/home/owner/share/dotnet/TPA.txt 
+
+ /usr/bin/dotnet-run-ni.sh
+
+rm -rf /usr/share/dotnet.tizen/framework/Tizen.NUI.dll
+ rm -rf /usr/share/dotnet.tizen/framework/ref/Tizen.NUI.dll
+ cp Tizen.NUI.dll /usr/share/dotnet.tizen/framework/
+ cp Tizen.NUI.dll /usr/share/dotnet.tizen/framework/ref/
+ chsmack -a "_" /usr/share/dotnet.tizen/framework/Tizen.NUI.dll 
+chsmack -a "_" /usr/share/dotnet.tizen/framework/ref/Tizen.NUI.dll
